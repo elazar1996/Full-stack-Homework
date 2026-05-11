@@ -1,0 +1,60 @@
+/* המיכל שעוטף את הכל - "הכרטיס" */
+.dashboard-card {
+    width: 90%;
+    margin: 50px auto;
+    background-color: #ffffff;
+    border-radius: 15px; /* פינות מעוגלות לכרטיס */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* צל ברור ומודרני */
+    padding: 20px;
+    overflow: hidden; /* מבטיח שהטבלה לא תצא מהפינות המעוגלות */
+}
+
+h2 {
+    text-align: center;
+    color: #003366;
+    margin-bottom: 20px;
+}
+
+/* עיצוב הטבלה */
+table {
+    width: 100%;
+    border-collapse: collapse; /* ביטול הרווחים הכפולים בין הגבולות */
+    font-family: sans-serif;
+}
+
+/* עיצוב התאים */
+th, td {
+    padding: 15px; /* ריפוד לתאים */
+    text-align: right; /* יישור טקסט לימין (עברית) */
+    border-bottom: 1px solid #eeeeee;
+}
+
+/* עיצוב כותרות הטבלה */
+thead {
+    background-color: #003366;
+    color: #ffffff;
+}
+
+th {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* --- האנימציה והריחוף --- */
+tbody tr {
+    transition: background-color 0.3s ease; /* שינוי צבע חלק */
+}
+
+tbody tr:hover {
+    background-color: #f0f7ff; /* צבע דגש בהיר בריחוף */
+    cursor: pointer;
+}
+
+/* עיצוב הסטטוסים (אופציונלי - לשדרוג המראה) */
+.status {
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+}
+.active { background-color: #d4edda; color: #155724; }
+.pending { background-color: #fff3cd; color: #856404; }
