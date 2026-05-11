@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <form action="https://api.web3forms.com/submit" method="post">
+        
+        <input type="hidden" name="access_key" value="7216f970-b1fa-4611-90f6-5cfdcc00d52c">
+
+        <div class="form-group">
+            <label for="name">Name</label> 
+            <input type="text" id="name" name="Name">
+
+        </div>
+        <div class="form-group">
+            <label for="age">Age</label>
+            <input type="number" id="age" min="0" name="Age">
+
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="Email">
+
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password">
+
+        </div>
+        <div class="form-group">
+            <label for="date">Date Of Birth</label>
+            <input type="date" id="date" name="Birthday">
+
+        </div>
+        <div class="form-group">
+            <label for="prof">Profession</label>
+            <select id="prof" name="Profession">
+                <option value="empty">Choose...</option>
+                <option value="html">html</option>
+                <option value="css">css</option>
+                <option value="js">js</option>
+                <option value="php">php</option>
+            </select>
+
+
+        </div>
+
+        <div class="form-group">
+            <button type="submit">Register</button>
+            <button type="reset">Clear</button>
+        </div>
+    </form>
+</body>
+
+</html>
