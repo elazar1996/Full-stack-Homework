@@ -1,0 +1,51 @@
+/* עיצוב המיכל הראשי */
+.product-gallery {
+    display: flex;             /* הופך את המיכל ל-Flexbox */
+    flex-wrap: wrap;           /* הוראה מהמשימה: מאפשר לכרטיסים לרדת שורה */
+    gap: 20px;                 /* יוצר רווח קבוע של 20 פיקסלים בין הכרטיסים */
+    padding: 40px;
+    background-color: #f4f7f6; /* רקע אפרפר בהיר כדי שהכרטיסים הלבנים יבלטו */
+}
+
+/* עיצוב כרטיס המוצר */
+.product-card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05); /* צל עדין מאוד לכרטיס */
+    border: 1px solid #e0e0e0;
+    
+    /* הגדרות Flexbox מהמשימה: */
+    flex-basis: 250px;         /* הרוחב האידיאלי שכל כרטיס מבקש לעצמו */
+    flex-grow: 1;              /* מאפשר לכרטיסים להתרחב ולמלא חללים ריקים בשורה */
+    flex-shrink: 1;            /* מאפשר לכרטיסים להתכווץ מעט אם המסך קטן מאוד */
+    
+    transition: transform 0.3s ease; /* הכנה לאפקט ריחוף */
+}
+
+/* אפקט ריחוף על הכרטיס (בונוס לעיצוב) */
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+/* עיצוב התמונה והטקסט בתוך הכרטיס */
+.product-card img {
+    width: 100%;               /* התמונה תתפוס תמיד את כל רוחב הכרטיס */
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.product-card h3 {
+    color: #003366;            /* הכחול הכהה של המותג שלך */
+    margin-bottom: 10px;
+}
+
+.price {
+    display: block;
+    font-weight: bold;
+    color: #C5A059;            /* צבע הזהב של הלוגו שלך למחיר */
+    margin-top: 15px;
+    font-size: 1.2rem;
+}

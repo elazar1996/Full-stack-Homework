@@ -1,0 +1,35 @@
+/* המיכל הראשי */
+.dashboard-grid {
+    display: grid; /* הופך את המיכל לגריד */
+    
+    /* הגדרת 3 עמודות שוות (1fr = חלק יחסי אחד מהמרחב) */
+    grid-template-columns: repeat(3, 1fr); 
+    
+    /* הגדרת 2 שורות בגובה קבוע של 200 פיקסלים */
+    grid-template-rows: repeat(2, 200px); 
+    
+    /* מרווח בין הפריטים */
+    gap: 20px; 
+    
+    padding: 20px;
+    background-color: #f0f2f5;
+}
+
+/* עיצוב כללי לווידג'טים */
+.widget {
+    background-color: #ffffff;
+    border: 1px solid #e1e4e8;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    padding: 15px;
+    color: #333;
+}
+
+/* --- המשימה המיוחדת: הווידג'ט הראשון --- */
+.first-widget {
+    display: grid;         /* גם הווידג'ט עצמו הופך לגריד פנימי */
+    place-items: center;   /* שורת המחץ: ממרכז את התוכן גם אופקית וגם אנכית */
+    font-weight: bold;
+    color: #003366;
+    text-align: center;
+}
