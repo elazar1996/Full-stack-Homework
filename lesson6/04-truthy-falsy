@@ -1,0 +1,21 @@
+const mixedValues = [0, "hello", "", null, 42, undefined, NaN, "false", [], {}];
+
+for(let i = 0; i < mixedValues.length; i++){
+    if(mixedValues[i]){
+        console.log(mixedValues[i], "is truthy")
+    }
+}
+
+/*1. המחרוזת "false" הוערכה כ-Truthy. 
+  ב-JavaScript, כל מחרוזת שאינה ריקה לחלוטין ("") נחשבת אוטומטית ל-Truthy, 
+  ללא קשר למשמעות המילים שבתוכה. המילה "false" מוקפת במרכאות, ולכן המנוע 
+  מתייחס אליה כאל טקסט רגיל ולא כאל הערך הבוליאני false.
+  
+  2. מערך ריק [] הוערך כ-Truthy.
+  ב-JavaScript, מערכים הם סוג של אובייקטים. הכלל אומר שכל האובייקטים (כולל 
+  מערכים ואובייקטים ריקים {}) הם תמיד Truthy.
+  
+  לסיכום: ב-JavaScript יש רשימה סגורה וקצרה של ערכים שהם Falsy:
+  0, "" (מחרוזת ריקה), null, undefined, NaN, והערך false עצמו. 
+  כל ערך אחר שלא נמצא ברשימה הזו, הוא בהכרח Truthy.*/
+ 
