@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1 {
+            color: blue;
+        }
+    </style>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1 style="color: green;">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eos, quam?</h1>
+    <p>For the h1 element, the green color takes precedence because it is an inline style, which is applied last.</p>
+    <h2 class="headline" id="hdl">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus, quisquam!</h2>
+    <p>The ID selector wins (marked with a hash - '#') because it has a specificity value of 1, 0, 0. This is in
+        contrast to the Class selector, which has a specificity of 0, 1, 0, and the Tag selector, which has a
+        specificity of 0, 0, 1.
+
+        Both have a lower value than the specificity of the ID selector (1, 0, 0).</p>
+
+</body>
+
+</html>
