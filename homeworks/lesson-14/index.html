@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- כותרת ראשונית שתשתנה על ידי ה-JS -->
+    <title>Original Title</title>
+    <!-- סקריפט דמה עבור סעיף 1 -->
+    <script src="example.js"></script>
+</head>
+<body>
+
+    <!-- ========================================== -->
+    <!-- HTML עבור חלק 2 -->
+    <!-- ========================================== -->
+    <h1 id="title">JavaScript is awesome<span style="display:none;"> — hidden text</span></h1>
+    <h2 id="subtitle"></h2>
+
+    <!-- ========================================== -->
+    <!-- HTML עבור חלק 3 -->
+    <!-- ========================================== -->
+    <ul>
+        <li class="item">HTML</li>
+        <li class="item">CSS</li>
+        <li class="item">JavaScript</li>
+        <li class="item">React</li>
+    </ul>
+
+    <!-- ========================================== -->
+    <!-- HTML עבור חלק 4 -->
+    <!-- ========================================== -->
+    <form>
+        <div>
+            <label for="username">Username</label>
+            <input type="text" id="username">
+        </div>
+        <br>
+        <input type="button" value="Submit" id="submit-btn">
+    </form>
+
+    <!-- ========================================== -->
+    <!-- קוד ה-JavaScript -->
+    <!-- ========================================== -->
+    <script>
+        // --------------------------------------------------
+        // חלק 1 — אובייקט ה-Document (מבוא)
+        // --------------------------------------------------
+        
+        // שינוי כותרת העמוד
+        document.title = "Elzar Halevi"; // החלף בשם שלך
+
+        // גישה לסקריפט הראשון והדפסת ה-src
+        const firstScript = document.head.getElementsByTagName('script')[0] || document.body.getElementsByTagName('script')[0];
+        console.dir(firstScript.src || firstScript.tagName);
+
+        // פונקציית היכרות עם Template Literal
+        function introduce(greeting, name) {
+            console.log(`${greeting}, my name is ${name}!`);
+        }
+        introduce("Welcome", "Israel");
+
+
+        // --------------------------------------------------
+        // חלק 2 — getElementById
+        // --------------------------------------------------
+        
+        // בחירת האלמנט והדפסתו
+        const titleEl = document.getElementById("title");
+        console.dir(titleEl);
+
+        // שינוי ה-innerText של כותרת המשנה
+        const subtitleEl = document.getElementById("subtitle");
+        subtitleEl.innerText = titleEl.innerText;
+        /* 
+         הסבר: הטקסט המוסתר לא מופיע.
+         המאפיין innerText קורא רק את הטקסט שמוצג למשתמש בפועל, 
+         ולכן הוא מתעלם מאלמנטים שיש להם display:none.
+        */
+
+        // שינוי ה-innerHTML
+        subtitleEl.innerHTML = titleEl.innerHTML;
+        /* 
+         הסבר להבדל עכשיו: 
+         בניגוד ל-innerText, המאפיין innerHTML מעתיק את קוד ה-HTML במלואו,
+         כולל תגית ה-span עם מאפיין ה-display:none שלה.
+        */
+
+        // הוספת עיצוב דרך JavaScript
+        subtitleEl.style.backgroundColor = "lightblue";
+        subtitleEl.style.borderLeft = "4px solid orange";
+
+
+        // --------------------------------------------------
+        // חלק 3 — getElementsByClassName & getElementsByTagName
+        // --------------------------------------------------
+
+        // בחירת אלמנטים לפי מחלקה והדפסת האוסף
+        const items = document.getElementsByClassName("item");
+        console.log("Collection of items:", items);
+        console.log("Is it an array?", Array.isArray(items)); // מחזיר false (זה HTMLCollection)
+        console.log("Number of items:", items.length);
+
+        // לולאת for עם אינדקס
+        for (let i = 0; i < items.length; i++) {
+            // שינוי צבע הטקסט לכל הפריטים
+            items[i].style.color = "darkblue";
+            
+            // הוספת גבול רק לפריט באינדקס 1 (CSS)
+            if (i === 1) {
+                items[i].style.border = "2px solid gray";
+            }
+        }
+
+        // החלפת התוכן של ה-li האחרון בקישור
+        items[items.length - 1].innerHTML = '<a href="https://react.dev" target="_blank">React Docs</a>';
+
+        // בחירת כל אלמנטי ה-li עם getElementsByTagName ולולאת for...of
+        const allLis = document.getElementsByTagName("li");
+        for (let li of allLis) {
+            li.style.backgroundColor = "lightyellow";
+        }
+
+
+        // --------------------------------------------------
+        // חלק 4 — Event Object & addEventListener
+        // --------------------------------------------------
+
+        const submitBtn = document.getElementById("submit-btn");
+        const usernameInput = document.getElementById("username");
+
+        // פונקציית הטיפול באירוע
+        function handleClick() {
+            console.log("Button was interacted with!");
+            
+            // קריאת הערך מה-input והדפסתו
+            const username = usernameInput.value;
+            console.log(`Hello, ${username}!`);
+        }
+
+        // חיבור האירוע mouseenter (כהוראת סעיף 2 בחלק זה)
+        submitBtn.addEventListener("mouseenter", handleClick);
+        /* 
+         הסבר ההבדל בין click ל-mouseenter:
+         - click: מחייב את המשתמש ללחוץ פיזית על העכבר ולשחרר (קליק).
+         - mouseenter: מופעל ברגע שסמן העכבר עובר ומרחף מעל גבולות האלמנט, ללא צורך בלחיצה.
+        */
+
+        // בונוס: אירוע mouseleave לשינוי צבע
+        submitBtn.addEventListener("mouseleave", function() {
+            submitBtn.style.backgroundColor = "coral";
+        });
+
+    </script>
+</body>
+</html>
