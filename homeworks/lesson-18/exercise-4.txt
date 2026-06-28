@@ -1,0 +1,9 @@
+Exercise 4 - Predict the Output
+
+Output:
+OK: Alice
+FAILED: Network timeout
+OK: Bob
+
+What would happen if you replaced Promise.allSettled with Promise.all? 
+If you used Promise.all instead, the entire Promise.all would reject immediately as soon as p2 rejects with the 'Network timeout' error, meaning it wouldn't wait for or resolve the other promises and the catch block would handle the error (or it would be unhandled since there's no catch here). Promise.all Settled waits for all promises to finish regardless of success or failure.
