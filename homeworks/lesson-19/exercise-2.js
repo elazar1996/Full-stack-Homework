@@ -1,0 +1,17 @@
+// The bug: In the catch block, the error parameter is named `error`, but the `console.error` tries to access `err.message`.
+// If `fs.readFile` threw an error, it would cause a ReferenceError, crashing the server.
+
+app.get("/products", async (req, res) => {  
+  try {  
+    const stringifyProducts = await fs.readFile(`${__dirname}/db/products.json`)  
+    const products = JSON.parse(stringifyProducts)  
+    res.json(products)  
+  } catch (error) {  
+    console.error({  
+      message: "Failed to fetch products",  
+      endpoint: "/products",  
+      errorMsg: error.message, // FIX: Changed 'err' to 'error'
+    })  
+    res.status(500).send("Internal server error")  
+  }  
+})

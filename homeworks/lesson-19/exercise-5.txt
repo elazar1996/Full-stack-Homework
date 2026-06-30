@@ -1,0 +1,11 @@
+1. What does the PUT handler return for the matched item?
+It returns: { id: 3, salary: 9000 }
+The rest of the fields (title and level) are lost because it creates a new object containing only the id and the fields from req.body.
+
+2. What does the PATCH handler return for the matched item?
+It returns: { id: 3, title: "Engineer", level: "Senior", salary: 9000 }
+The salary field is overridden, but the rest of the existing fields are preserved due to the spread operator on ...item.
+
+3. What is the real-world difference between PUT and PATCH, and when would you use each?
+- PUT is meant to replace an entire resource. You send the complete representation of the entity, and it overwrites the existing data. You use PUT when you want to replace the whole object.
+- PATCH is meant for partial updates. You send only the fields that need to be modified, and the server merges these changes into the existing entity, leaving the omitted fields intact. You use PATCH when you only want to update specific properties of a resource without having to send the entire object.
