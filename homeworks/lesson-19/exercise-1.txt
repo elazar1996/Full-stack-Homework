@@ -1,0 +1,18 @@
+Order of logs:
+1. "A"
+2. "B"
+3. "E"
+4. "C"
+5. "D"
+6. { leagues: [...], teams: [...] }
+
+Explanation:
+When loadData() is called, it executes synchronously until the first await. Therefore, it logs "A", initiates the fetch requests (which return promises immediately without blocking), and logs "B". Then, it encounters the await Promise.all(...) line. This await pauses the execution of loadData() and yields control back to the main event loop. 
+Because control is yielded back, the next line outside the function, console.log("E"), is executed synchronously.
+Once both fetch promises resolve, the execution of loadData() resumes, logging "C". It then awaits the .json() parsing. Once parsed, it logs "D" and finally logs the objects.
+
+What is logged first — "B" or "E"?
+"B" is logged first because the code inside an async function runs synchronously up to the very first await.
+
+What is the advantage of calling fetch before await Promise.all?
+By calling fetch before the await statement, you initiate both network requests concurrently. They run in parallel, meaning you don't have to wait for the first request to finish before starting the second one.
