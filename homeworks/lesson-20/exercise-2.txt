@@ -1,0 +1,9 @@
+1. POST /vault with body { "code": "111" }
+Console log: "Opening the vault..."
+Client receives: { "secret": "The gold is in the basement" }
+Explanation: The first middleware checks the code, it is '111', so it calls next(). Control is passed to the second middleware which logs the message and sends the JSON response.
+
+2. POST /vault with body { "code": "999" }
+Console log: (Nothing is logged)
+Client receives: "Access Denied" (as plain text)
+Explanation: The code is not '111' or '222'. The first middleware falls into the else block and sends 'Access Denied'. The second middleware is never reached.

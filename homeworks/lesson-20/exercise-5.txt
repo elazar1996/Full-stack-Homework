@@ -1,0 +1,19 @@
+What JSON body does a client receive when it calls GET /journey?
+The client receives:
+{
+  "trail": "start-middle",
+  "count": 2
+}
+
+If you swapped the order to [stepTwo, stepOne], would the response change — and why?
+Yes, the response would change to:
+{
+  "trail": "start",
+  "count": 2
+}
+
+Why? 
+Because middlewares run sequentially based on the order they are defined in the array. 
+If `stepTwo` runs first, it evaluates `res.locals.trail + '-middle'`. Since `res.locals.trail` is undefined at that point, it results in the string `"undefined-middle"`. 
+Then, `stepOne` runs and unconditionally overwrites `res.locals.trail` with the value `"start"`. 
+As a result, the final JSON sent to the client contains `"trail": "start"`.
