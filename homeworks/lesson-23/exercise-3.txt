@@ -1,0 +1,9 @@
+Flow:
+1. The request first hits `isMemberExists`. It finds the member in `db/members.json` and calls `next()`.
+2. The request then hits `jwtLibrarian`. Since there is NO Authorization header, it triggers the first condition.
+3. `jwtLibrarian` responds with status `401` and body `'token missing'`.
+
+Answers:
+- What gets logged: Nothing (unless `isMemberExists` has a log we don't see. `jwtLibrarian` only logs if the token fails verification, but here it's entirely missing).
+- What does the client receive: Status code `401` and body `'token missing'`.
+- Is 'handler reached' ever logged: No, the middleware chain stops at `jwtLibrarian` because it sends a response and doesn't call `next()`.
