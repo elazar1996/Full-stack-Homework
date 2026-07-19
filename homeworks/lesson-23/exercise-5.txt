@@ -1,0 +1,12 @@
+The middleware `passwordDecryptor` is mounted BEFORE `isMemberExists`.
+This means `passwordDecryptor` runs first.
+
+In `passwordDecryptor`:
+`const isValid = await compare(req.body.pin + process.env.PEPPER, res.locals.member.hash)`
+
+Because `isMemberExists` hasn't run yet, `res.locals.member` is undefined. 
+When JS tries to read `res.locals.member.hash`, it will throw a `TypeError: Cannot read properties of undefined (reading 'hash')`.
+
+Since `passwordDecryptor` is not wrapped in a `try/catch` block, this error is uncaught. 
+Depending on the Express version and server setup, the request will likely hang and eventually time out, or the server might crash. 
+The client will NOT get the expected response.
